@@ -1,4 +1,10 @@
-# react 路由权限
+# React@18 + Vite + TypeScript 项目
+
+- 代码规范（Eslint + Prettier + Husky + Lint-staged）
+- 路由配置 + 权限（react-router-dom@6）
+- 状态管理（zustand）
+- unocss
+
 
 ## 创建项目
 
@@ -8,20 +14,20 @@ pnpm create vite@latest
 
 ## 代码规范配置
 
-#### 首先先安装下vscode插件：
+#### 1.首先先安装下vscode插件：
 
 - ESLint
 - Prettier - Code formatter
 
-#### 新版`vite`创建项目时已安装好 `eslint`，不需要再单独安装
+#### 2.新版`vite`创建项目时已安装好 `eslint`，不需要再单独安装
 
-#### 安装[prettier](https://www.prettier.cn/)：代码格式美化
+#### 3.安装[prettier](https://www.prettier.cn/)：代码格式美化
 
 ```bash
 pnpm add --save-dev --save-exact prettier
 ```
 
-#### 安装[eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)和[eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
+#### 4.安装[eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)和[eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
 
 ```bash
 pnpm add eslint-config-prettier eslint-plugin-prettier --save-dev
@@ -37,7 +43,7 @@ pnpm add eslint-config-prettier eslint-plugin-prettier --save-dev
 }
 ```
 
-`plugin:prettier/recommended` 到底在做什么
+`plugin:prettier/recommended`做了什么
 
 ```json
 {
@@ -51,7 +57,7 @@ pnpm add eslint-config-prettier eslint-plugin-prettier --save-dev
 }
 ```
 
-#### 添加 husky + lint-staged
+#### 5.添加`husky` + `lint-staged`
 
 ```bash
 pnpx mrm@2 lint-staged
