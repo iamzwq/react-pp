@@ -1,9 +1,9 @@
 # React@18 + Vite + TypeScript 项目
 
 - 代码规范（Eslint + Prettier + Husky + Lint-staged）
-- 路由配置 + 权限（react-router-dom@6）
 - 状态管理（zustand）
-- unocss
+- 路由配置 + 权限（react-router-dom@6）
+- CSS原子话（unocss）
 
 
 ## 创建项目
@@ -60,11 +60,15 @@ pnpm add eslint-config-prettier eslint-plugin-prettier --save-dev
 #### 5.添加`husky` + `lint-staged`
 
 ```bash
-pnpx mrm@2 lint-staged
+npx mrm@2 lint-staged
 ```
 > 执行此命令前需要你的项目是一个git项目，因为husky是管理git钩子的，如果不是git项目，执行`git init`初始化git仓库
 
 此命令会安装`husky`和`lint-staged`，然后向项目的`package.json`添加一个配置，和一个`.husky/pre-commit`文件。
+
+内容如下：
+
+package.json
 
 ```json
 {
@@ -80,3 +84,5 @@ pnpx mrm@2 lint-staged
 
 npx lint-staged
 ```
+
+完成。
