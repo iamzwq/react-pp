@@ -1,9 +1,11 @@
-import { setToken, useStorageStore } from "@/stores/storage";
+import { useCommonStore } from "@/stores/common";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from "./store";
 
 const Login = () => {
   const navigate = useNavigate();
-  const theme = useStorageStore(state => state.theme);
+  const theme = useCommonStore(state => state.theme);
+  const login = useAuthStore(state => state.login);
 
   return (
     <div className={theme}>
@@ -48,8 +50,9 @@ const Login = () => {
               type="submit"
               className="contained-btn mt-4 text-lg w-full"
               onClick={() => {
-                setToken("abcd-token");
-                navigate("/");
+                login({ username: "admin", password: "123456" }).then(() => {
+                  navigate("/");
+                });
               }}
               role="button"
               value="登录"

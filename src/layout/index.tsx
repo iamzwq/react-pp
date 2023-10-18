@@ -1,9 +1,9 @@
 import { FC, PropsWithChildren } from "react";
-import { useStorageStore } from "@/stores/storage";
+import { useCommonStore } from "@/stores/common";
 import Header from "./Header";
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
-  const theme = useStorageStore(state => state.theme);
+  const theme = useCommonStore(state => state.theme);
   return (
     <div className={theme}>
       <Header />

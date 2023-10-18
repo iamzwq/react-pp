@@ -1,5 +1,5 @@
 import { userBeforeEnter } from "@/pages/User/beforeEnter";
-import { lazyLoad } from "./utils";
+import { suspenseLazy } from "./utils";
 import { Navigate, RouteObject } from "react-router-dom";
 import AuthRoute from "@/components/AuthRoute";
 import AboutAuthRoute from "@/components/AboutAuthRoute";
@@ -7,7 +7,7 @@ import AboutAuthRoute from "@/components/AboutAuthRoute";
 const publicRoutes: RouteObject[] = [
   {
     path: "login",
-    element: lazyLoad(() => import("@/pages/Login")),
+    element: suspenseLazy(() => import("@/pages/Login")),
   },
 ];
 
@@ -22,7 +22,7 @@ const protectedRoutes: RouteObject[] = [
       },
       {
         path: "home",
-        element: lazyLoad(() => import("@/pages/Home")),
+        element: suspenseLazy(() => import("@/pages/Home")),
       },
       {
         path: "about",
@@ -30,14 +30,14 @@ const protectedRoutes: RouteObject[] = [
         children: [
           {
             index: true,
-            element: lazyLoad(() => import("@/pages/About")),
+            element: suspenseLazy(() => import("@/pages/About")),
           },
         ],
       },
       {
         path: "user",
         loader: userBeforeEnter,
-        element: lazyLoad(() => import("@/pages/User")),
+        element: suspenseLazy(() => import("@/pages/User")),
       },
     ],
   },
@@ -48,6 +48,6 @@ export const routes: RouteObject[] = [
   ...protectedRoutes,
   {
     path: "*",
-    element: lazyLoad(() => import("@/pages/NotFound")),
+    element: suspenseLazy(() => import("@/pages/NotFound")),
   },
 ];

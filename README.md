@@ -1,10 +1,11 @@
 # React@18 + Vite + TypeScript 项目
 
-- 代码规范（Eslint + Prettier + Husky + Lint-staged）
-- 状态管理（zustand）
-- 路由配置 + 权限（react-router-dom@6）
-- CSS原子话（unocss）
-
+- 代码规范（[ESLint](https://eslint.org/) + [Prettier](https://www.prettier.cn/) + [Husky](https://github.com/typicode/husky) + [Lint-staged](https://github.com/lint-staged/lint-staged)）
+- 状态管理（[zustand](https://docs.pmnd.rs/zustand/getting-started/introduction)）
+- 路由配置 + 权限（[react-router-dom@6](https://reactrouter.com/en/main)）
+- CSS原子化（[unocss](https://unocss.dev/)）
+- 数据请求（[TanStack Query](https://tanstack.com/query/latest/) + [axios](https://www.axios-http.cn/)）
+- UI组件（[antd](https://ant.design/index-cn/)）
 
 ## 创建项目
 
@@ -35,7 +36,7 @@ pnpm add eslint-config-prettier eslint-plugin-prettier --save-dev
 
 - `eslint-config-prettier`：解决`eslint`和`prettier`冲突
 - `eslint-plugin-prettier`：将`prettier`作为`eslint`规则运行，并将差异作为ESLint问题报告。
-> `eslint-plugin-prettier`这个插件附带一个`plugin:prettier/recommended`配置，可以一次性设置插件和`eslint-config-prettier`。你需要添加`plugin:prettier/recommended`作为你的`.eslintrc.json`中的最后一个扩展名
+  > `eslint-plugin-prettier`这个插件附带一个`plugin:prettier/recommended`配置，可以一次性设置插件和`eslint-config-prettier`。你需要添加`plugin:prettier/recommended`作为你的`.eslintrc.json`中的最后一个扩展名
 
 ```js
 {
@@ -62,6 +63,7 @@ pnpm add eslint-config-prettier eslint-plugin-prettier --save-dev
 ```bash
 npx mrm@2 lint-staged
 ```
+
 > 执行此命令前需要你的项目是一个git项目，因为husky是管理git钩子的，如果不是git项目，执行`git init`初始化git仓库
 
 此命令会安装`husky`和`lint-staged`，然后向项目的`package.json`添加一个配置，和一个`.husky/pre-commit`文件。
@@ -77,7 +79,9 @@ package.json
   }
 }
 ```
+
 .husky/pre-commit
+
 ```shell
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"

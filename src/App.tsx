@@ -7,7 +7,7 @@ import zhCN from "antd/locale/zh_CN";
 const queryClient = new QueryClient();
 
 function App() {
-  // const theme = useStorageStore(state => state.theme);
+  // const theme = useGlobalStore(state => state.theme);
 
   // useLayoutEffect(() => {
   //   const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");

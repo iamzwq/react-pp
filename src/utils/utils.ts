@@ -66,3 +66,17 @@ export const sleep = (time: number) => {
     setTimeout(resolve, time);
   });
 };
+
+export const formatCurrency = (number: number) => {
+  const formatter = new Intl.NumberFormat("zh-CN", {
+    style: "currency",
+    currency: "CNY", // 美元：USD, 语言设置为"en-US"
+    currencySign: "accounting", // currencySign选项启用记帐格式
+  });
+  return formatter.format(number);
+};
+
+export const formatNumber = (number: number) => {
+  const formatter = new Intl.NumberFormat();
+  return formatter.format(number);
+};
