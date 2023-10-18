@@ -1,11 +1,22 @@
-import { useCommonStore } from "@/stores/common";
+import { setToken, setUser, useCommonStore } from "@/stores/common";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthStore } from "./store";
+import { fetchLogin } from "./api";
 
 const Login = () => {
   const navigate = useNavigate();
   const theme = useCommonStore(state => state.theme);
-  const login = useAuthStore(state => state.login);
+
+  const onSubmit = () => {
+    fetchLogin({ username: "admin", password: "123456" }).then(() => {
+      setToken("lalala");
+      setUser({
+        name: "admin",
+        email: "admin@admin.com",
+        phone: "12345678901",
+      });
+      navigate("/");
+    });
+  };
 
   return (
     <div className={theme}>
@@ -49,11 +60,7 @@ const Login = () => {
             <input
               type="submit"
               className="contained-btn mt-4 text-lg w-full"
-              onClick={() => {
-                login({ username: "admin", password: "123456" }).then(() => {
-                  navigate("/");
-                });
-              }}
+              onClick={onSubmit}
               role="button"
               value="登录"
             />
