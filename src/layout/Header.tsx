@@ -1,6 +1,5 @@
 import { Link, useMatches } from "react-router-dom";
-import { setTheme, useCommonStore } from "@/stores/common";
-import { useAuthStore } from "@/pages/Login/store";
+import { setTheme, setToken, setUser, useCommonStore } from "@/stores/common";
 
 const Header = () => {
   return (
@@ -62,11 +61,13 @@ const ThemeToggle = () => {
 };
 
 const LogoutBtn = () => {
-  const reset = useAuthStore(state => state.reset);
   return (
     <button
       className="inline-flex cursor-pointer items-center bg-transparent rounded outline-none border-0 px-2 py-1 ml-4 text-slate-600 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-100"
-      onClick={reset}
+      onClick={() => {
+        setUser({});
+        setToken("");
+      }}
     >
       <div className="i-lucide-log-out mr-1" />
       登出

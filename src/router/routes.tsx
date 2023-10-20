@@ -1,4 +1,4 @@
-import { userBeforeEnter } from "@/pages/User/beforeEnter";
+import { userRouterBefore } from "@/pages/User/routerBefore";
 import { suspenseLazy } from "./utils";
 import { Navigate, RouteObject } from "react-router-dom";
 import AuthRoute from "@/components/AuthRoute";
@@ -36,7 +36,7 @@ const protectedRoutes: RouteObject[] = [
       },
       {
         path: "user",
-        loader: userBeforeEnter,
+        loader: userRouterBefore,
         element: suspenseLazy(() => import("@/pages/User")),
       },
     ],
