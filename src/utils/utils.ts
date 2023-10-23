@@ -1,3 +1,8 @@
+/**
+ * 深克隆
+ * @param value
+ * @returns
+ */
 export const deepClone = <T = any>(value: T) => {
   if (typeof value !== "object" || value === null) return value;
 
@@ -67,6 +72,11 @@ export const sleep = (time: number) => {
   });
 };
 
+/**
+ * 将数字格式化成货币 3000 -> ¥3,000.00
+ * @param number
+ * @returns
+ */
 export const formatCurrency = (number: number) => {
   const formatter = new Intl.NumberFormat("zh-CN", {
     style: "currency",
@@ -76,6 +86,11 @@ export const formatCurrency = (number: number) => {
   return formatter.format(number);
 };
 
+/**
+ * 数字格式化：3000 -> 3,000
+ * @param number
+ * @returns 格式化后的数字
+ */
 export const formatNumber = (number: number) => {
   const formatter = new Intl.NumberFormat();
   return formatter.format(number);

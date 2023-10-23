@@ -1,21 +1,23 @@
-import { setToken, setUser, useCommonStore } from "@/stores/common";
+import { setToken, useCommonStore } from "@/stores/common";
 import { Link, useNavigate } from "react-router-dom";
-import { fetchLogin } from "./api";
 
 const Login = () => {
   const navigate = useNavigate();
   const theme = useCommonStore(state => state.theme);
 
   const onSubmit = () => {
-    fetchLogin({ username: "admin", password: "123456" }).then(() => {
-      setToken("lalala");
-      setUser({
-        name: "admin",
-        email: "admin@admin.com",
-        phone: "12345678901",
-      });
-      navigate("/");
-    });
+    setToken("lalala");
+    navigate("/");
+    // 模拟登录接口
+    // fetchLogin({ username: "admin", password: "123456" }).then(() => {
+    //   setToken("lalala");
+    //   setUser({
+    //     name: "admin",
+    //     email: "admin@admin.com",
+    //     phone: "12345678901",
+    //   });
+    //   navigate("/");
+    // });
   };
 
   return (

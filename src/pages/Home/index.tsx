@@ -6,7 +6,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex-center flex-col">
+    <div>
       <h1>Home Page</h1>
       <DatePicker onChange={onChange} />
     </div>

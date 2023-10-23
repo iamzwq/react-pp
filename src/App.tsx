@@ -1,30 +1,27 @@
 import { App as AntdApp, ConfigProvider } from "antd";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Router from "./router";
-import "dayjs/locale/zh-cn";
+import { RouterProvider } from "react-router-dom";
+import StaticAntd from "@/utils/staticAntd";
+import router from "./router";
 import zhCN from "antd/locale/zh_CN";
+import "dayjs/locale/zh-cn";
 
 const queryClient = new QueryClient();
 
 function App() {
-  // const theme = useGlobalStore(state => state.theme);
-
-  // useLayoutEffect(() => {
-  //   const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
-  //   themeMedia.addEventListener("change", e => {
-  //     setTheme(e.matches ? "dark" : "light");
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   document.documentElement.setAttribute("theme", theme);
-  // }, [theme]);
-
   return (
     <QueryClientProvider client={queryClient}>
-      <ConfigProvider locale={zhCN}>
+      <ConfigProvider
+        locale={zhCN}
+        theme={{
+          token: {
+            colorPrimary: "#a855f7",
+          },
+        }}
+      >
         <AntdApp>
-          <Router />
+          <StaticAntd />
+          <RouterProvider router={router} />
         </AntdApp>
       </ConfigProvider>
     </QueryClientProvider>

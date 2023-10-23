@@ -28,7 +28,7 @@ export default UserPage;
 
 const SubComponent = () => {
   const queryClient = useQueryClient();
-  const users = queryClient.getQueriesData({ queryKey: ["users"] });
+  const users = queryClient.getQueryData(["users"]);
   console.log("32->", users);
   return <div>Sub Component</div>;
 };

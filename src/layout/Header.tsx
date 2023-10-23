@@ -22,6 +22,7 @@ const Nav = () => {
         { name: "Home", path: "/home" },
         { name: "About", path: "/about" },
         { name: "User", path: "/user" },
+        { name: "Setting", path: "/setting" },
       ].map(item => {
         return (
           <Link
