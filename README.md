@@ -4,7 +4,7 @@
 
 - [x] 代码规范（[ESLint](https://eslint.org/) + [Prettier](https://www.prettier.cn/) + [Husky](https://github.com/typicode/husky) + [Lint-staged](https://github.com/lint-staged/lint-staged)）
 - [x] 状态管理（[zustand](https://docs.pmnd.rs/zustand/getting-started/introduction)）
-- [x] 路由配置 + 权限（[react-router-dom@6](https://reactrouter.com/en/main)）
+- [x] 自动生成路由（[react-router-dom@6](https://reactrouter.com/en/main)）
 - [x] 数据请求（[TanStack Query](https://tanstack.com/query/latest/) + [axios](https://www.axios-http.cn/)）
 - [x] UI组件（[antd](https://ant.design/index-cn/)）
 - [x] CSS原子化（[unocss](https://unocss.dev/)）

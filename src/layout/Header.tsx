@@ -1,4 +1,4 @@
-import { Link, useMatches } from "react-router-dom";
+import { Link, useMatches, useNavigate } from "react-router-dom";
 import { setTheme, setToken, setUser, useCommonStore } from "@/stores/common";
 
 const Header = () => {
@@ -62,12 +62,14 @@ const ThemeToggle = () => {
 };
 
 const LogoutBtn = () => {
+  const navigate = useNavigate();
   return (
     <button
       className="inline-flex cursor-pointer items-center bg-transparent rounded outline-none border-0 px-2 py-1 ml-4 text-slate-600 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-100"
       onClick={() => {
         setUser({});
         setToken("");
+        navigate("/login");
       }}
     >
       <div className="i-lucide-log-out mr-1" />
