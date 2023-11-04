@@ -1,26 +1,35 @@
 import { FC } from "react";
 import { useUsers } from "./utils";
 import { useQueryClient } from "@tanstack/react-query";
+import { Table } from "antd";
+
+const columns = [
+  {
+    title: "姓名",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "邮箱",
+    dataIndex: "email",
+    key: "email",
+  },
+];
 
 const UserPage: FC = () => {
   const { data: users, isLoading } = useUsers();
 
   return (
-    <>
-      {isLoading && <p>Loading...</p>}
-      {users && users.length > 0 && (
-        <ul className="flex flex-col gap-2">
-          {users.map(user => {
-            return (
-              <li key={user.id} className="px-2 py-1 flex items-center text-lg">
-                {user.name}: {user.email}
-              </li>
-            );
-          })}
-        </ul>
-      )}
+    <div className="p-4">
+      <Table
+        rowKey="id"
+        dataSource={users || []}
+        columns={columns}
+        size="small"
+        loading={isLoading}
+      />
       <SubComponent />
-    </>
+    </div>
   );
 };
 

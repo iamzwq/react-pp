@@ -5,3 +5,25 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Fix mobile Safari increase font-size on landscape mode */
+/* 修复移动Safari在横向模式下增加字体大小的问题 */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+ol,
+ul,
+menu,
+summary {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+/* 图像不能超过其容器 */
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}

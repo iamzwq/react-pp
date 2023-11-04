@@ -4,7 +4,7 @@ import { setTheme, setToken, setUser, useCommonStore } from "@/stores/common";
 const Header = () => {
   return (
     <>
-      <header className="fixed inset-x-0 flex items-center px-4 w-full h-[68px] border-b-gray shadow-md bg-slate-50 dark:bg-slate-900 dark:text-slate-100">
+      <header className="fixed inset-x-0 z-1000 flex items-center px-4 w-full h-[60px] border-b-gray shadow-md bg-slate-50 dark:bg-slate-900 dark:text-slate-100">
         <Nav />
         <ThemeToggle />
         <LogoutBtn />
