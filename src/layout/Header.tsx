@@ -5,6 +5,7 @@ const Header = () => {
   return (
     <>
       <header className="fixed inset-x-0 z-1000 flex items-center px-4 w-full h-[60px] border-b-gray shadow-md bg-slate-50 dark:bg-slate-900 dark:text-slate-100">
+        <Logo />
         <Nav />
         <ThemeToggle />
         <LogoutBtn />
@@ -13,11 +14,21 @@ const Header = () => {
   );
 };
 
+const Logo = () => {
+  return (
+    <Link to="/">
+      <div className="w-[160px] h-[40px] bg-slate-200 rounded flex-center text-xl uppercase text-indigo select-none cursor-pointer">
+        👻 react app
+      </div>
+    </Link>
+  );
+};
+
 const Nav = () => {
   const matches = useMatches();
   const pathname = matches.at(-1)?.pathname || "";
   return (
-    <nav className="flex space-x-4">
+    <nav className="flex space-x-4 ml-4">
       {[
         { name: "Home", path: "/home" },
         { name: "About", path: "/about" },
