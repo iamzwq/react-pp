@@ -1,4 +1,5 @@
 import { setTheme, useCommonStore } from "@/stores/common";
+import { ThemeMode } from "@/types/public";
 import { useEffect, useLayoutEffect } from "react";
 
 const useTheme = () => {
@@ -6,7 +7,7 @@ const useTheme = () => {
 
   useLayoutEffect(() => {
     const handleSetTheme = (e: MediaQueryListEvent) => {
-      setTheme(e.matches ? "dark" : "light");
+      setTheme(e.matches ? ThemeMode.Dark : ThemeMode.Light);
     };
     const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
     themeMedia.addEventListener("change", handleSetTheme);
