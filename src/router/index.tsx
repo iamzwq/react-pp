@@ -1,7 +1,7 @@
 import { Navigate, RouteObject, createBrowserRouter, redirect } from "react-router-dom";
 import { routeConfig } from "./routes";
 import { wrapSuspense } from "./helper";
-import { checkPermission } from "@/utils/permission";
+import { isLogin } from "@/utils/permission";
 
 const routes: RouteObject[] = [
   {
@@ -11,9 +11,7 @@ const routes: RouteObject[] = [
   {
     path: "/",
     loader: () => {
-      if (!checkPermission("token")) {
-        return redirect("/login");
-      }
+      if (!isLogin) return redirect("/login");
       return null;
     },
     element: wrapSuspense(() => import("@/layout")),
