@@ -5,7 +5,7 @@ import { persist } from "zustand/middleware";
 const initailState = {
   theme: ThemeMode.Light,
   token: "",
-  user: {} as any,
+  userInfo: {} as any,
 };
 
 export const useCommonStore = create<typeof initailState>()(
@@ -18,4 +18,4 @@ export const setTheme = (theme: ThemeMode) => useCommonStore.setState({ theme })
 
 export const setToken = (token: string) => useCommonStore.setState({ token });
 
-export const setUser = (user: any) => useCommonStore.setState({ user });
+export const setUserInfo = (userInfo: any) => useCommonStore.setState({ userInfo });

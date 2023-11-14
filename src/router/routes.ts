@@ -1,6 +1,6 @@
 import { set } from "lodash-es";
+import { lazy } from "react";
 import { RouteObject } from "react-router-dom";
-import { wrapSuspense } from "./helper";
 
 export const genarateRoutes = () => {
   const modules = import.meta.glob([
@@ -24,7 +24,7 @@ export const mapPathConfigToRoutes = (pathConfig: Record<string, any>): RouteObj
     const { index, ...rest } = child;
     return {
       path,
-      element: wrapSuspense(index),
+      Component: lazy(index),
       children: mapPathConfigToRoutes(rest),
     };
   });

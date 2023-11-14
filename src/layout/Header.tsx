@@ -1,18 +1,17 @@
 import { Link, useMatches, useNavigate } from "react-router-dom";
-import { setTheme, setToken, setUser, useCommonStore } from "@/stores/common";
+import { setTheme, setToken, setUserInfo, useCommonStore } from "@/stores/common";
+import { ThemeMode } from "@/types/public";
 
-const Header = () => {
+export default function Header() {
   return (
-    <>
-      <header className="fixed inset-x-0 z-1000 flex items-center px-4 w-full h-[60px] border-b-gray shadow-md bg-slate-50 dark:bg-slate-900 dark:text-slate-100">
-        <Logo />
-        <Nav />
-        <ThemeToggle />
-        <LogoutBtn />
-      </header>
-    </>
+    <header className="fixed inset-x-0 z-1000 flex items-center px-4 w-full h-[60px] border-b-gray shadow-md bg-slate-50 dark:bg-slate-900 dark:text-slate-100">
+      <Logo />
+      <Nav />
+      <ThemeToggle />
+      <LogoutBtn />
+    </header>
   );
-};
+}
 
 const Logo = () => {
   return (
@@ -55,15 +54,14 @@ const Nav = () => {
 
 const ThemeToggle = () => {
   const theme = useCommonStore(state => state.theme);
-
   return (
     <button
       className="bg-transparent border-none outline-none ml-auto cursor-pointer text-xl"
       onClick={() => {
-        setTheme(theme === "dark" ? "light" : "dark");
+        setTheme(theme === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark);
       }}
     >
-      {theme === "dark" ? (
+      {theme === ThemeMode.Dark ? (
         <div className="i-lucide-sun text-slate-100" />
       ) : (
         <div className="i-lucide-moon text-slate-500" />
@@ -78,7 +76,7 @@ const LogoutBtn = () => {
     <button
       className="inline-flex cursor-pointer items-center bg-transparent rounded outline-none border-0 px-2 py-1 ml-4 text-slate-600 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-100"
       onClick={() => {
-        setUser({});
+        setUserInfo({});
         setToken("");
         navigate("/login");
       }}
@@ -88,5 +86,3 @@ const LogoutBtn = () => {
     </button>
   );
 };
-
-export default Header;

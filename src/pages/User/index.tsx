@@ -18,16 +18,17 @@ const columns = [
 
 const UserPage: FC = () => {
   const { data: users, isLoading } = useUsers();
-  console.log("21->", users);
 
   return (
-    <div className="p-4">
+    <div className="flex p-4 space-x-4">
       <Table
         rowKey="id"
         dataSource={users || []}
         columns={columns}
         size="small"
+        bordered
         loading={isLoading}
+        className="flex-1"
       />
       <SubComponent />
     </div>
@@ -39,6 +40,9 @@ export default UserPage;
 const SubComponent = () => {
   const queryClient = useQueryClient();
   const users = queryClient.getQueryData([apiUrl.users]);
-  console.log("sub component get users", users);
-  return <div>Sub Component</div>;
+  return (
+    <div className="h-[440px] overflow-y-auto flex-1 bg-slate-100">
+      <pre>{JSON.stringify(users, undefined, 2)}</pre>
+    </div>
+  );
 };

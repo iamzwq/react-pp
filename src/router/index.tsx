@@ -1,12 +1,12 @@
 import { Navigate, RouteObject, createBrowserRouter, redirect } from "react-router-dom";
 import { routeConfig } from "./routes";
-import { wrapSuspense } from "./helper";
 import { isLogin } from "@/utils/permission";
+import { lazy } from "react";
 
 const routes: RouteObject[] = [
   {
     path: "login",
-    element: wrapSuspense(() => import("@/pages/login")),
+    Component: lazy(() => import("@/pages/login")),
   },
   {
     path: "/",
@@ -14,7 +14,7 @@ const routes: RouteObject[] = [
       if (!isLogin) return redirect("/login");
       return null;
     },
-    element: wrapSuspense(() => import("@/layout")),
+    Component: lazy(() => import("@/layout")),
     children: [
       {
         index: true,
@@ -25,7 +25,7 @@ const routes: RouteObject[] = [
   },
   {
     path: "*",
-    element: wrapSuspense(() => import("@/pages/not-found")),
+    Component: lazy(() => import("@/pages/not-found")),
   },
 ];
 

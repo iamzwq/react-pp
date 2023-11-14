@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { App as AntdApp, ConfigProvider, theme } from "antd";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "react-router-dom";
@@ -35,7 +36,9 @@ function App() {
       >
         <AntdApp>
           <StaticAntd />
-          <RouterProvider router={router} />
+          <Suspense fallback={<div>loading...</div>}>
+            <RouterProvider router={router} />
+          </Suspense>
         </AntdApp>
       </ConfigProvider>
     </QueryClientProvider>
