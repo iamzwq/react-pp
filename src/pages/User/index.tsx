@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Table } from "antd";
 import { apiUrl, useUsers } from "./api";
@@ -16,9 +15,8 @@ const columns = [
   },
 ];
 
-const UserPage: FC = () => {
+export default function UserPage() {
   const { data: users, isLoading } = useUsers();
-
   return (
     <div className="flex p-4 space-x-4">
       <Table
@@ -33,9 +31,7 @@ const UserPage: FC = () => {
       <SubComponent />
     </div>
   );
-};
-
-export default UserPage;
+}
 
 const SubComponent = () => {
   const queryClient = useQueryClient();

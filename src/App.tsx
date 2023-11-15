@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { App as AntdApp, ConfigProvider, theme } from "antd";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "react-router-dom";
@@ -7,6 +7,7 @@ import router from "./router";
 import zhCN from "antd/locale/zh_CN";
 import "dayjs/locale/zh-cn";
 import { useCommonStore } from "./stores/common";
+import { ThemeMode } from "./types/public";
 
 const { darkAlgorithm, defaultAlgorithm } = theme;
 
@@ -23,6 +24,11 @@ const queryClient = new QueryClient({
 
 function App() {
   const theme = useCommonStore(state => state.theme);
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <ConfigProvider
@@ -31,7 +37,7 @@ function App() {
           token: {
             colorPrimary: "#a855f7",
           },
-          algorithm: theme === "dark" ? darkAlgorithm : defaultAlgorithm,
+          algorithm: theme === ThemeMode.Dark ? darkAlgorithm : defaultAlgorithm,
         }}
       >
         <AntdApp>

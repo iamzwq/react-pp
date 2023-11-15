@@ -1,11 +1,10 @@
-import { setToken, useCommonStore } from "@/stores/common";
+import { setToken } from "@/stores/common";
 import { message } from "@/utils/staticAntd";
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const theme = useCommonStore(state => state.theme);
 
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -26,9 +25,7 @@ const Login = () => {
   };
 
   return (
-    <div
-      className={`${theme} flex-center flex-col h-screen w-screen text-slate-600 dark:text-slate-200 bg-[url(@/assets/images/bg_login.svg)] bg-fixed bg-no-repeat bg-cover`}
-    >
+    <div className="flex-center flex-col h-screen w-screen text-slate-600 dark:text-slate-200 bg-[url(@/assets/images/bg_login.svg)] bg-fixed bg-no-repeat bg-cover">
       <div className="flex-center flex-col w-100 p-10 rounded-4 bg-white/10">
         <h1 className="mb-4 text-white/80">Welcome</h1>
         <form className="w-full" onSubmit={onSubmit} ref={formRef}>
