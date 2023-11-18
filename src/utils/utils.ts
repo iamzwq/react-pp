@@ -159,3 +159,34 @@ export const formatNumber = (number: number) => {
   const formatter = new Intl.NumberFormat();
   return formatter.format(number);
 };
+
+/**
+ * 将数组分成指定大小的块
+ * @param source 数组源
+ * @param size 块的大小，默认为1
+ * @returns 分块后的数组
+ */
+export function chunk<T>(source: T[], size = 1) {
+  if (size < 1) return [];
+  const result = [];
+  for (let i = 0, len = source.length; i < len; i += size) {
+    result.push(source.slice(i, i + size));
+  }
+  return result;
+}
+
+/**
+ * 遍历给定对象并返回除了指定键之外的副本对象
+ * @param obj - 要遍历的对象
+ * @param keys - 要排除的键列表
+ * @returns 排除指定键后的新对象
+ */
+export function omit<T extends object, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
+  const result: any = {};
+  for (const key in obj) {
+    if (!keys.includes(key)) {
+      result[key] = obj[key];
+    }
+  }
+  return result;
+}

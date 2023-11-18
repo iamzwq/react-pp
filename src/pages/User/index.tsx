@@ -1,6 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { Table } from "antd";
-import { apiUrl, useUsers } from "./api";
+import { Button, Table } from "antd";
+import { apiUrl, useAddUser, useUsers } from "./api";
 
 const columns = [
   {
@@ -17,19 +17,29 @@ const columns = [
 
 export default function UserPage() {
   const { data: users, isLoading } = useUsers();
+  const mutation = useAddUser();
   return (
-    <div className="flex p-4 space-x-4">
-      <Table
-        rowKey="id"
-        dataSource={users || []}
-        columns={columns}
-        size="small"
-        bordered
-        loading={isLoading}
-        className="flex-1"
-      />
-      <SubComponent />
-    </div>
+    <>
+      <div className="flex p-4 space-x-4">
+        <Table
+          rowKey="id"
+          dataSource={users || []}
+          columns={columns}
+          size="small"
+          bordered
+          loading={isLoading}
+          className="flex-1"
+        />
+        <SubComponent />
+      </div>
+      <Button
+        onClick={() => {
+          mutation.mutate({ name: "test", email: "test@qq.com" });
+        }}
+      >
+        add
+      </Button>
+    </>
   );
 }
 
