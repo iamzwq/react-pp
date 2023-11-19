@@ -17,7 +17,7 @@ const Logo = () => {
   return (
     <Link to="/">
       <div className="w-[160px] h-[40px] bg-slate-200 rounded flex-center text-xl uppercase text-indigo select-none cursor-pointer">
-        👻 react app
+        😀 react app
       </div>
     </Link>
   );

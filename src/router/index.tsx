@@ -11,7 +11,7 @@ const routes: RouteObject[] = [
   {
     path: "/",
     loader: () => {
-      if (!isLogin) return redirect("/login");
+      if (!isLogin()) return redirect("/login");
       return null;
     },
     Component: lazy(() => import("@/layout")),
