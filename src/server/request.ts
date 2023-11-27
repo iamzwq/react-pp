@@ -84,5 +84,5 @@ class Request {
 
 export const request = new Request({
   timeout: 20 * 1000,
-  baseURL: "http://localhost:5050/api",
+  baseURL: import.meta.env.VITE_APP_BASE_URL,
 });
