@@ -4,3 +4,4 @@ export { default as useMountedRef } from "./useMountedRef";
 export { default as useUrlQueryParams } from "./useUrlQueryParams";
 export { default as useFirstMount } from "./useFirstMount";
 export { default as useDarkMode } from "./useDarkMode";
+export { default as useAuth } from "./useAuth";

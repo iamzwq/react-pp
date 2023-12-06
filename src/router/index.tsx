@@ -1,6 +1,6 @@
 import { Navigate, RouteObject, createBrowserRouter, redirect } from "react-router-dom";
 import { routeConfig } from "./routes";
-import { isLogin } from "@/utils/permission";
+import { hasToken } from "@/utils/permission";
 import { lazy } from "react";
 
 const routes: RouteObject[] = [
@@ -11,7 +11,7 @@ const routes: RouteObject[] = [
   {
     path: "/",
     loader: () => {
-      if (!isLogin()) return redirect("/login");
+      if (!hasToken()) return redirect("/login");
       return null;
     },
     Component: lazy(() => import("@/layout")),
