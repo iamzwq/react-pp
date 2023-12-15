@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 
-export const formatDate = (date?: dayjs.ConfigType, format?: string) => {
+export const dateFormat = (date?: dayjs.ConfigType, format?: string) => {
+  if (!dayjs(date).isValid()) return "";
   return dayjs(date).format(format);
 };
