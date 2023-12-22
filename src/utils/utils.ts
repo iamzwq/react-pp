@@ -22,15 +22,27 @@ export const is = (value: any, type: DataType): value is DataType => {
 };
 
 /**
- * 判断数据是否是空对象/空数组/空字符串
- * @param value 要检测的值
- * @returns boolean
+ * 判断数据是否为空对象、空数组或空字符串
+ * @param value 待判断的数据
+ * @returns 如果数据为空对象、空数组或空字符串则返回 true，否则返回 false
  */
 export const isEmpty = (value: string | unknown[] | object) => {
-  if (is(value, "object"))
-    return Reflect.ownKeys(value as unknown as object).length === 0;
-  return (value as unknown as string | unknown[]).length === 0;
+  if (Array.isArray(value)) {
+    return value.length === 0;
+  } else if (typeof value === "object") {
+    return Reflect.ownKeys(value).length === 0;
+  } else if (typeof value === "string") {
+    return value.trim().length === 0;
+  }
+  return false;
 };
+
+/**
+ * 判断一个值是否为 falsify 值：false、-0、0、""、null、undefined、NaN
+ * @param value 要判断的值
+ * @returns 如果是 falsify 值则返回 true，否则返回 false
+ */
+export const isFalsy = (value: any) => !value;
 
 /**
  * 深度克隆一个对象或数组
@@ -181,12 +193,12 @@ export function chunk<T>(source: T[], size = 1) {
  * @param keys - 要排除的键列表
  * @returns 排除指定键后的新对象
  */
-export function omit<T extends object, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
-  const result: any = {};
-  for (const key in obj) {
-    if (!keys.includes(key)) {
-      result[key] = obj[key];
-    }
-  }
-  return result;
-}
+// export function omit<T extends object, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
+//   const result: any = {};
+//   for (const key in obj) {
+//     if (!keys.includes(key)) {
+//       result[key] = obj[key];
+//     }
+//   }
+//   return result;
+// }
